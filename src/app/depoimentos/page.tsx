@@ -24,7 +24,7 @@ const depoimentos = [
 
 export default function DepoimentosPage() {
     return (
-        <div className="min-h-screen pt-40 pb-24 px-4 md:px-8">
+        <div className="min-h-screen pt-32 pb-24 px-4 md:px-8">
             <div className="max-w-5xl mx-auto">
                 <div className="text-center mb-16">
                     <h1 className="text-4xl font-bold text-text-primary mb-4">O que dizem nossos clientes</h1>

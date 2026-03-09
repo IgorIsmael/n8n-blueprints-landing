@@ -28,7 +28,7 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative overflow-hidden pt-32 pb-16 lg:pt-40 lg:pb-24">
+    <section className="relative overflow-hidden pt-28 pb-16 lg:pt-32 lg:pb-24">
       {/* Background Glows (Extra contrast area for text readability) */}
       <div className="absolute top-0 left-1/2 -z-10 -translate-x-1/2 -translate-y-1/2 opacity-20 blur-3xl">
         <div className="h-[40rem] w-[40rem] rounded-full bg-purple-600/30 mix-blend-screen" />
@@ -44,10 +44,12 @@ export function HeroSection() {
             initial="hidden"
             animate="show"
           >
-            <motion.div variants={textVariants} className="inline-flex items-center rounded-full border border-[rgba(242,122,84,0.3)] bg-[rgba(242,122,84,0.1)] px-3 py-1 text-sm font-medium text-[#F27A54] backdrop-blur-sm shadow-sm ring-1 ring-inset ring-[rgba(242,122,84,0.2)]">
-              <Zap className="mr-2 h-4 w-4 text-[#F27A54]" />
-              <span>Automatize processos em minutos, não dias</span>
-            </motion.div>
+            <div className="w-full flex justify-center lg:justify-start">
+              <motion.div variants={textVariants} className="inline-flex items-center rounded-full border border-[rgba(242,122,84,0.3)] bg-[rgba(242,122,84,0.1)] px-3 py-1 text-sm font-medium text-[#F27A54] backdrop-blur-sm shadow-sm ring-1 ring-inset ring-[rgba(242,122,84,0.2)]">
+                <Zap className="mr-2 h-4 w-4 text-[#F27A54]" />
+                <span>Automatize processos em minutos, não dias</span>
+              </motion.div>
+            </div>
 
             <motion.h1 variants={textVariants} className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-text-primary max-w-2xl leading-tight drop-shadow-sm">
               Blueprints Prontos para o seu{" "}

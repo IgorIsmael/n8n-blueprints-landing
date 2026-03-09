@@ -3,7 +3,7 @@ import { Mail } from "lucide-react";
 
 export default function ContatoPage() {
     return (
-        <div className="min-h-screen pt-40 pb-24 px-4 md:px-8">
+        <div className="min-h-screen pt-32 pb-24 px-4 md:px-8">
             <div className="max-w-2xl mx-auto text-center">
                 <h1 className="text-4xl font-bold text-text-primary mb-6">Entre em Contato</h1>
                 <p className="text-lg text-text-secondary mb-12">
