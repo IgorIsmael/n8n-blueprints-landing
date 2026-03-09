@@ -1,12 +1,15 @@
 import { HeroSection } from "@/components/HeroSection";
 import { ProductGrid } from "@/components/ProductGrid";
+import { TestimonialsPreview } from "@/components/TestimonialsPreview";
 import { FAQ } from "@/components/FAQ";
+import { MobileStickyCTA } from "@/components/MobileStickyCTA";
 
 export default function Home() {
   return (
     <>
       <HeroSection />
       <ProductGrid />
+      <TestimonialsPreview />
       <FAQ />
 
       {/* Simple Footer */}
@@ -22,6 +25,10 @@ export default function Home() {
           </p>
         </div>
       </footer>
+
+      {/* Global Add-ons */}
+      <MobileStickyCTA />
     </>
   );
 }
+

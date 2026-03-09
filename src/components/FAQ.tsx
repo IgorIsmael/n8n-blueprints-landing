@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface FAQItemProps {
     question: string;
@@ -12,45 +13,53 @@ function FAQItem({ question, answer }: FAQItemProps) {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="border-b border-graphite-700">
+        <div className="border-b border-graphite-700 overflow-hidden">
             <button
                 className="flex w-full items-center justify-between py-6 text-left 
-                   focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 rounded-md"
+                   focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 rounded-md group"
                 onClick={() => setIsOpen(!isOpen)}
                 aria-expanded={isOpen}
             >
-                <span className="text-base font-semibold text-text-primary">{question}</span>
-                <ChevronDown
-                    className={`h-5 w-5 text-purple-400 transition-transform duration-200 ${isOpen ? "rotate-180" : ""
-                        }`}
-                />
+                <span className="text-base font-semibold text-text-primary group-hover:text-purple-400 transition-colors">{question}</span>
+                <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.2 }}
+                >
+                    <ChevronDown className="h-5 w-5 text-purple-400" />
+                </motion.div>
             </button>
-            <div
-                className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? "max-h-96 opacity-100 mb-6" : "max-h-0 opacity-0"
-                    }`}
-            >
-                <p className="text-text-secondary text-base leading-relaxed">{answer}</p>
-            </div>
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                    >
+                        <p className="text-text-secondary text-base leading-relaxed pb-6 pr-8">{answer}</p>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 }
 
 const faqs = [
     {
-        question: "Como eu instalo os blueprints no meu n8n?",
-        answer: "Após a compra, você fará o download de um arquivo JSON. No seu n8n, basta criar um novo workflow, clicar no botão de opções no canto superior direito e selecionar 'Import from File'. Selecione o arquivo baixado e o fluxo estará pronto para uso."
+        question: "Preciso ter meu próprio servidor ou entender de programação?",
+        answer: "Não! Nós cuidamos de toda a infraestrutura técnica. Você não precisa contratar servidores na Amazon ou DigitalOcean, nem saber programar. Nós subimos uma instância exclusiva para você em uma VPS otimizada (via Docker), garantindo que sua automação rode de forma estável, rápida e sem dores de cabeça."
     },
     {
-        question: "Preciso de conhecimento em programação?",
-        answer: "Não necessariamente. Nossos blueprints são desenvolvidos para serem 'plug and play'. Você precisará apenas configurar as suas credenciais (tokens de API) nos nós indicados, conforme explicamos no vídeo de instruções."
+        question: "Como funciona o processo de implantação após a compra?",
+        answer: "Assim que o pagamento é confirmado, agendamos uma Reunião de Briefing. Nela, entendemos o seu processo atual e pegamos os acessos/tokens necessários (como seu número de WhatsApp, acessos de CRM, etc). Depois da reunião, nossa equipe faz toda a configuração e implantação no servidor. Você recebe tudo pronto, rodando!"
     },
     {
-        question: "Terei acesso a atualizações?",
-        answer: "Sim! Ao comprar um blueprint, você tem acesso vitalício à versão adquirida e a todas as atualizações futuras e melhorias que fizermos naquele fluxo específico."
+        question: "Meus dados ficam misturados com os de outros clientes?",
+        answer: "Definitivamente não. Levamos a segurança e a privacidade a sério. Cada cliente recebe um ambiente isolado em nosso servidor. As suas contas, seus fluxos no n8n e os dados dos seus clientes nunca se misturam com os de outras empresas."
     },
     {
-        question: "O blueprint funciona no n8n Cloud e no Self-Hosted?",
-        answer: "Sim, os arquivos JSON são compatíveis com qualquer instância do n8n, seja na versão Cloud oficial ou se você hospedar na sua própria infraestrutura."
+        question: "Terei acesso a atualizações e suporte?",
+        answer: "Sim! Como nós gerenciamos o ambiente para você, garantimos que sua instância do n8n esteja sempre atualizada e segura. Além disso, você tem suporte direto com nossa equipe caso alguma automação pare de funcionar por mudanças em APIs externas."
     }
 ];
 
