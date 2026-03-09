@@ -28,7 +28,7 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative overflow-hidden pt-[140px] pb-16 lg:pt-[220px] lg:pb-24">
+    <section className="relative overflow-hidden pt-36 pb-16 lg:pt-48 lg:pb-24">
       {/* Background Glows (Extra contrast area for text readability) */}
       <div className="absolute top-0 left-1/2 -z-10 -translate-x-1/2 -translate-y-1/2 opacity-20 blur-3xl">
         <div className="h-[40rem] w-[40rem] rounded-full bg-purple-600/30 mix-blend-screen" />
