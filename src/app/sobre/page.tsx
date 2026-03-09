@@ -3,7 +3,7 @@ import { Server, ShieldCheck, Users, Rocket } from "lucide-react";
 
 export default function SobrePage() {
     return (
-        <div className="min-h-screen pt-48 pb-24 px-4 md:px-8 relative z-10">
+        <div className="min-h-screen pt-40 pb-24 px-4 md:px-8">
             <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-16">
                     <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-6">Como Trabalhamos</h1>
